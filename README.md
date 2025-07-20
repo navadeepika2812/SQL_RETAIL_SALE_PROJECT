@@ -9,10 +9,10 @@ This project focuses on analyzing retail sales data using SQL Server. The datase
 ## 📂 Dataset Description
 
 - **Fields Included:**
-  - Date, Region, State, City
+  - total_sale,price_per_unit,cogs
   - Product, Category
-  - Quantity, Unit Price, Total Price
-  - Transaction ID, Customer ID, Age, Gender, Sale Date & Time
+  - Quantity, Unit Price
+  - Transaction ID, Customer ID, Age, Gender, Sale Date , Sale_time,
 
 ---
 
@@ -24,6 +24,10 @@ This project focuses on analyzing retail sales data using SQL Server. The datase
 
 ### 2. Data Cleaning
 - Identified and removed records with NULLs in critical fields
+- Checking for duplicates
+- Checking the datatypes
+- Checking for invalid values 
+- Checking date & time fields
 
 ### 3. Data Exploration
 - Total number of transactions
