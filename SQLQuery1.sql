@@ -46,8 +46,8 @@ WHERE
      price_per_unit IS NULL OR 
      cogs IS NULL OR
      total_sale IS NULL;
---Delete all records containing NULLs
 
+--Delete all records containing NULLs
 DELETE FROM Retail_sales
 WHERE 
      transactions_id IS NULL OR 
@@ -61,6 +61,36 @@ WHERE
      price_per_unit IS NULL OR 
      cogs IS NULL OR
      total_sale IS NULL;
+
+--checking for duplicates
+SELECT *, COUNT(*) AS freq
+FROM Retail_sales
+GROUP BY
+  transactions_id,customer_id, sale_date, sale_time, gender,age,category, quantiy, total_sale,price_per_unit,cogs
+HAVING COUNT(*) > 1;
+
+--checking the datatypes
+SELECT 
+    COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = 'Retail_sales';
+
+
+--checking for invalid values 
+SELECT * FROM Retail_sales
+WHERE age < 0 OR age > 100
+   OR quantiy <= 0
+   OR price_per_unit < 0
+   OR total_sale < 0;
+
+
+--Checking date & time fields
+SELECT * FROM Retail_sales
+WHERE sale_date > GETDATE();  
+
+
+
+
 --*Data Exploration*
 --1. How many total sales are there?
 SELECT COUNT(*) AS total_sales FROM Retail_sales;
